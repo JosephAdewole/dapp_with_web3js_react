@@ -1,10 +1,8 @@
-# Getting Started with Create React App
+# Web3 Dapp with React and Web3.js 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Goal is to achieve proficiency in web3 frontend dev
 
-## What I have done
-
-So far, I have ...
+## Features
 
 1. Used Web3.js
 2. Prompted user to connect to my dapp using their  metamask account
