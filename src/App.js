@@ -15,13 +15,14 @@ function App() {
 
     async function loadAccounts(){
       const accounts = await web3.eth.requestAccounts()
+      console.log(accounts)
       setAccount(accounts[0])
     }
     async function loadBalance(){
       const network = await web3.eth.net.getNetworkType()
-      const balance = await web3.eth.getBalance(account)
-      
       setNetwork(network)
+
+      const balance = await web3.eth.getBalance(account)     
       setBalance(balance)
     }
 
