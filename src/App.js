@@ -56,8 +56,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        Decentralised Ballot
-        <br/>
+        
         Network is {network}
         <br/>
         Account is {account}
