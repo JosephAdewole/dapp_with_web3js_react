@@ -1,7 +1,5 @@
 # Web3 Dapp with React and Web3.js 
 
-Goal is to achieve proficiency in web3 frontend dev
-
 ## Features
 
 1. Used Web3.js
