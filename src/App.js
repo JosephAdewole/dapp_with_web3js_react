@@ -9,6 +9,7 @@ function App() {
   const [balance, setBalance] = useState()
   const [transactionCount, settransactionCount] = useState()
   const [gottenaccounts, setGottenaccounts] = useState([])
+  const [gasEstimate, setGasestimate] = useState()
 
 
   useEffect(() => {
@@ -34,13 +35,23 @@ function App() {
       const transactionCount = await web3.eth.getTransactionCount(account)
       settransactionCount(transactionCount)
     }
-
+    async function estimateGas(){
+      const gasEstimate = await web3.eth.estimateGas({
+        to: "0xDc25A176beAbF03e86Fe593321123CEf5dae7931",
+        data: "0xc6888fa10000000000000000000000000000000000000000000000000000000000000003"
+      })
+      console.log(gasEstimate)
+      setGasestimate(gasEstimate)
+  
+    }
+    
     
     loadAccounts()
     loadBalance()
     getNumberofTransactions()
+    estimateGas()
 
-  }, [account, network, balance, transactionCount])
+  }, [account, balance])
   
   return (
     <div className="App">
@@ -57,6 +68,8 @@ function App() {
         and the Transaction Count is {transactionCount}
         <br/>
         The active account is {gottenaccounts}
+        <br/>
+        The gas estimate is {gasEstimate}
       </header>
     </div>
   );
