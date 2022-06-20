@@ -7,6 +7,8 @@ function App() {
   const [account, setAccount] = useState()
   const [network, setNetwork] = useState()
   const [balance, setBalance] = useState()
+  const [transactionCount, settransactionCount] = useState()
+  const [gottenaccounts, setGottenaccounts] = useState([])
 
 
   useEffect(() => {
@@ -15,7 +17,9 @@ function App() {
 
     async function loadAccounts(){
       const accounts = await web3.eth.requestAccounts()
-      console.log(accounts)
+      const gottenaccounts = await web3.eth.getAccounts()
+      console.log(gottenaccounts)
+      setGottenaccounts(gottenaccounts)
       setAccount(accounts[0])
     }
     async function loadBalance(){
@@ -26,11 +30,17 @@ function App() {
       setBalance(balance)
     }
 
+    async function getNumberofTransactions(){
+      const transactionCount = await web3.eth.getTransactionCount(account)
+      settransactionCount(transactionCount)
+    }
+
     
     loadAccounts()
     loadBalance()
+    getNumberofTransactions()
 
-  }, [account, network, balance])
+  }, [account, network, balance, transactionCount])
   
   return (
     <div className="App">
@@ -43,7 +53,10 @@ function App() {
         <br/>
 
         Balance is {balance}
-
+        <br/>
+        and the Transaction Count is {transactionCount}
+        <br/>
+        The active account is {gottenaccounts}
       </header>
     </div>
   );
